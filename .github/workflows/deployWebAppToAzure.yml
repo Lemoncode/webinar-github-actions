@@ -1,0 +1,33 @@
+name: CI and CD
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+    #Using artifacts
+      - name: Publish the code
+        run:  dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/webapp
+        working-directory: ./LemoncodeWeb
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: webapp-artifact
+          path: ${{ env.DOTNET_ROOT }}/webapp
