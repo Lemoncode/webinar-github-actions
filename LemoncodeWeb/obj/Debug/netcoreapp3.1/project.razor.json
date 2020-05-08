@@ -13,14 +13,14 @@
     "TagHelpers": [
       {
         "Kind": "Components.Component",
-        "Name": "LemoncodeWeb.Pages.FetchData",
+        "Name": "LemoncodeWeb.App",
         "AssemblyName": "LemoncodeWeb",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "FetchData",
+            "TagName": "App",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -32,19 +32,19 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LemoncodeWeb.Pages.FetchData"
+          "Common.TypeName": "LemoncodeWeb.App"
         }
       },
       {
         "Kind": "Components.Component",
-        "Name": "LemoncodeWeb.Pages.FetchData",
+        "Name": "LemoncodeWeb.App",
         "AssemblyName": "LemoncodeWeb",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "LemoncodeWeb.Pages.FetchData",
+            "TagName": "LemoncodeWeb.App",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -56,7 +56,7 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LemoncodeWeb.Pages.FetchData",
+          "Common.TypeName": "LemoncodeWeb.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -160,6 +160,55 @@
       },
       {
         "Kind": "Components.Component",
+        "Name": "LemoncodeWeb.Pages.FetchData",
+        "AssemblyName": "LemoncodeWeb",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "FetchData",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LemoncodeWeb.Pages.FetchData"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "LemoncodeWeb.Pages.FetchData",
+        "AssemblyName": "LemoncodeWeb",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LemoncodeWeb.Pages.FetchData",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LemoncodeWeb.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
         "Name": "LemoncodeWeb.Pages.Index",
         "AssemblyName": "LemoncodeWeb",
         "Documentation": null,
@@ -204,55 +253,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "LemoncodeWeb.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "LemoncodeWeb.App",
-        "AssemblyName": "LemoncodeWeb",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LemoncodeWeb.App"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "LemoncodeWeb.App",
-        "AssemblyName": "LemoncodeWeb",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LemoncodeWeb.App",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LemoncodeWeb.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

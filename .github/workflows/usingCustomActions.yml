@@ -1,0 +1,57 @@
+name: CI and CD
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest #He cambiado el runner. Hay tres disponible
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+      #Añado el uso de artefactos
+      - name: Publish the code
+        run: dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/webapp
+        working-directory: ./LemoncodeWeb
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: webapp-artifact
+          path: ${{ env.DOTNET_ROOT }}/webapp
+
+  deploy:
+    runs-on: windows-latest
+    needs: [build] #Hay que esperar a que termine el job llamado build
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: webapp-artifact
+        path: ${{ env.DOTNET_ROOT }}/webapp
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v1
+      with:        
+        slot-name: 'producction'
+        package: ${{ env.DOTNET_ROOT }}/webapp
+        publish-profile: ${{ secrets.WebAppPublishProfile }}
+
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./ab-action
+        with:
+          URL: "http://lemoncode.azurewebsites.net/"

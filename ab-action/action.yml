@@ -1,0 +1,24 @@
+name: Apache Benchmark Action
+description: Pon a prueba tu aplicación
+author: Gisela Torres
+
+inputs:
+  URL:
+    description: "La URL que quieres probar"
+    required: true
+  Concurrency:
+    description: "Número de usuarios concurrentes para tu test"
+    required: false
+    default: '50'
+  NumberOfRequests:
+    description: "Número de peticiones que quieres que se lancen"
+    required: false
+    default: '1000'
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "activity"
+  color: "orange"
