@@ -2,7 +2,7 @@ name: Custom Action
 
 on:
   push:
-    branches: [master]
+    branches: [disable]
 
 jobs:
   build:

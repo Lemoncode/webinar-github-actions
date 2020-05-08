@@ -1,8 +1,11 @@
-name: CI and CD
+name: Custom Action
 
 on:
   push:
-    branches: [disable]
+    branches: [master]
+
+env:
+  AZURE_URL: http://lemoncode.azurewebsites.net
 
 jobs:
   build:
@@ -35,15 +38,30 @@ jobs:
     needs: [build] #Hay que esperar a que termine el job llamado build
 
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: webapp-artifact
-        path: ${{ env.DOTNET_ROOT }}/webapp
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: webapp-artifact
+          path: ${{ env.DOTNET_ROOT }}/webapp
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v1
-      with:        
-        slot-name: 'producction'
-        package: ${{ env.DOTNET_ROOT }}/webapp
-        publish-profile: ${{ secrets.WebAppPublishProfile }}
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v1
+        with:
+          slot-name: "producction"
+          package: ${{ env.DOTNET_ROOT }}/webapp
+          publish-profile: ${{ secrets.WebAppPublishProfile }}
+
+  benchmark:
+    runs-on: ubuntu-latest
+    needs: [build, deploy]
+    strategy:
+      matrix:
+        URL:
+          - ${{env.AZURE_URL}}/
+          - ${{env.AZURE_URL}}/counter
+          - ${{env.AZURE_URL}}/fetchdata 
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./ab-action
+        with:
+          URL: ${{ matrix.URL }}
