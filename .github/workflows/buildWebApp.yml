@@ -1,4 +1,4 @@
-name: .NET Core
+name: Demo 1 - .NET Core
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Custom Action
+name: Demo 3 - Custom Action
 
 on:
   push:

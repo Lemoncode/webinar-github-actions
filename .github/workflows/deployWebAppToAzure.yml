@@ -1,4 +1,4 @@
-name: CI and CD
+name: Demo 2 - CI and CD
 
 on:
   push:
