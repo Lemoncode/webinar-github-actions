@@ -4,9 +4,6 @@ on:
   push:
     branches: [master]
 
-env:
-  AZURE_URL: http://lemoncode.azurewebsites.net
-
 jobs:
   build:
     runs-on: windows-latest #He cambiado el runner. Hay tres disponible
@@ -57,9 +54,9 @@ jobs:
     strategy:
       matrix:
         URL:
-          - ${{ env.AZURE_URL }}/
-          - ${{ env.AZURE_URL }}/counter
-          - ${{ env.AZURE_URL }}/fetchdata
+          - http://lemoncode.azurewebsites.net
+          - http://lemoncode.azurewebsites.net/counter
+          - http://lemoncode.azurewebsites.net/fetchdata
     steps:
       - uses: actions/checkout@v1
       - uses: ./ab-action
