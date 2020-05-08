@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest #He cambiado el runner. Hay tres disponible
+    runs-on: windows-latest #He cambiado el runner. Hay tres disponibles
 
     steps:
       - uses: actions/checkout@v2
@@ -54,9 +54,9 @@ jobs:
     strategy:
       matrix:
         URL:
-          - http://lemoncode.azurewebsites.net
-          - http://lemoncode.azurewebsites.net/counter
-          - http://lemoncode.azurewebsites.net/fetchdata
+          - https://lemoncode.azurewebsites.net
+          - https://lemoncode.azurewebsites.net/counter
+          - https://lemoncode.azurewebsites.net/fetchdata
     steps:
       - uses: actions/checkout@v1
       - uses: ./ab-action
