@@ -3,8 +3,6 @@ name: CI and CD
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
 
 jobs:
   build:
@@ -22,12 +20,31 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
-    #Using artifacts
+      #Using artifacts
       - name: Publish the code
-        run:  dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/webapp
+        run: dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/webapp
         working-directory: ./LemoncodeWeb
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
           name: webapp-artifact
           path: ${{ env.DOTNET_ROOT }}/webapp
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build] #We have to wait for the previous job
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: webapp-artifact
+        path: ${{env.DOTNET_ROOT}}/webapp
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v1
+      with:
+        # app-name: ${{ secrets.APPSERVICE_NAME }}
+        slot-name: 'producction'
+        package: ${{env.DOTNET_ROOT}}/webapp
+        publish-profile: ${{ secrets.WebAppPublishProfile }}
