@@ -1,0 +1,15 @@
+name: 'Playing with matrix'
+
+on: push
+
+jobs:
+  test:
+    strategy:
+    #A job matrix can generate a maximum of 256 jobs per workflow run
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Print a greeting
+      run: |
+        echo Wake up Neo...

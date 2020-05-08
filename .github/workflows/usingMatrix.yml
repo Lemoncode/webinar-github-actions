@@ -59,7 +59,7 @@ jobs:
         URL:
           - ${{env.AZURE_URL}}/
           - ${{env.AZURE_URL}}/counter
-          - ${{env.AZURE_URL}}/fetchdata 
+          - ${{env.AZURE_URL}}/fetchdata
     steps:
       - uses: actions/checkout@v1
       - uses: ./ab-action
