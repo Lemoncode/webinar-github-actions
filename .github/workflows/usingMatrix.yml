@@ -54,9 +54,9 @@ jobs:
     strategy:
       matrix:
         URL:
-          - "https://lemoncode.azurewebsites.net"
-          - "https://lemoncode.azurewebsites.net/counter"
-          - "https://lemoncode.azurewebsites.net/fetchdata"
+          - https://lemoncode.azurewebsites.net/
+          - https://lemoncode.azurewebsites.net/counter
+          - https://lemoncode.azurewebsites.net/fetchdata
     steps:
       - uses: actions/checkout@v1
       - uses: ./ab-action
