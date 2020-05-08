@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest #1. I changed the runner
 
     steps:
       - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
           path: ${{ env.DOTNET_ROOT }}/webapp
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [build] #We have to wait for the previous job
 
     steps:
@@ -39,12 +39,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: webapp-artifact
-        path: ${{env.DOTNET_ROOT}}/webapp
+        path: ${{ env.DOTNET_ROOT }}/webapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
       with:
         # app-name: ${{ secrets.APPSERVICE_NAME }}
         slot-name: 'producction'
-        package: ${{env.DOTNET_ROOT}}/webapp
+        package: ${{ env.DOTNET_ROOT }}/webapp
         publish-profile: ${{ secrets.WebAppPublishProfile }}
