@@ -2,7 +2,7 @@ name: Using Matrix
 
 on:
   push:
-    branches: [master]
+    branches: [disable]
 
 jobs:
   # build:
