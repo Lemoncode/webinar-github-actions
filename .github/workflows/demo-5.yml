@@ -2,7 +2,7 @@ name: Demo 5 - Using Matrix
 
 on:
   push:
-    branches: [disabled]
+    branches: [master]
 
 jobs:
   # build:
@@ -54,9 +54,9 @@ jobs:
     strategy:
       matrix:
         URL:
-          - https://lemoncode.azurewebsites.net/
-          - https://lemoncode.azurewebsites.net/counter
-          - https://lemoncode.azurewebsites.net/fetchdata
+          - https://lemoncodewebinar.azurewebsites.net/
+          - https://lemoncodewebinar.azurewebsites.net/counter
+          - https://lemoncodewebinar.azurewebsites.net/fetchdata
     steps:
       - uses: actions/checkout@v1
       - uses: ./ab-action

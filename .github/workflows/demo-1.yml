@@ -1,8 +1,8 @@
-name: Demo 1 - .NET Core
+name: Demo 1 - CI
 
 on:
   push:
-    branches: [ disabled ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
