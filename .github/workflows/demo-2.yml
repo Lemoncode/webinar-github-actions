@@ -1,12 +1,12 @@
-name: Demo 3 - Custom Action
+name: Demo 2 - CI and CD
 
 on:
   push:
-    branches: [master]
+    branches: [disabled]
 
 jobs:
   build:
-    runs-on: windows-latest #He cambiado el runner. Hay tres disponible
+    runs-on: windows-latest #He cambiado el runner. Hay tres disponibles
 
     steps:
       - uses: actions/checkout@v2
@@ -35,24 +35,15 @@ jobs:
     needs: [build] #Hay que esperar a que termine el job llamado build
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: webapp-artifact
-          path: ${{ env.DOTNET_ROOT }}/webapp
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: webapp-artifact
+        path: ${{ env.DOTNET_ROOT }}/webapp
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v1
-        with:
-          slot-name: "producction"
-          package: ${{ env.DOTNET_ROOT }}/webapp
-          publish-profile: ${{ secrets.WebAppPublishProfile }}
-
-  benchmark:
-    runs-on: ubuntu-latest
-    needs: [build, deploy]
-    steps:
-      - uses: actions/checkout@v1
-      - uses: ./ab-action
-        with:
-          URL: "http://lemoncode.azurewebsites.net/"
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v1
+      with:        
+        slot-name: 'producction'
+        package: ${{ env.DOTNET_ROOT }}/webapp
+        publish-profile: ${{ secrets.WebAppPublishProfile }}

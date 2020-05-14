@@ -2,7 +2,7 @@ name: Demo 1 - .NET Core
 
 on:
   push:
-    branches: [ master ]
+    branches: [ disable ]
   pull_request:
     branches: [ master ]
 
