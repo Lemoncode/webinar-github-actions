@@ -2,7 +2,7 @@ name: Demo 3 - Custom Action
 
 on:
   push:
-    branches: [disabled]
+    branches: [master]
 
 jobs:
   build:
@@ -55,4 +55,4 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./ab-action
         with:
-          URL: "http://lemoncode.azurewebsites.net/"
+          URL: "http://lemoncodewebinar.azurewebsites.net/"
