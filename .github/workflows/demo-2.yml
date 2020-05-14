@@ -2,7 +2,7 @@ name: Demo 2 - CI and CD
 
 on:
   push:
-    branches: [master]
+    branches: [disabled]
 
 jobs:
   build:
