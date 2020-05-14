@@ -2,7 +2,7 @@ name: Demo 5 - Using Matrix
 
 on:
   push:
-    branches: [master]
+    branches: [disabled]
 
 jobs:
   # build:
