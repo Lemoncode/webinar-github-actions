@@ -9,16 +9,9 @@ jobs:
     strategy:
       #A job matrix can generate a maximum of 256 jobs per workflow run
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        node: [6, 7, 8]
-        exclude: 
-        - os: windows-latest
-          node: 6
+        os: [ubuntu-latest, macos-latest, windows-latest]       
     runs-on: ${{ matrix.os }}
     steps:
       - name: Print a greeting
         run: |
           echo Wake up Neo...
-      - uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
