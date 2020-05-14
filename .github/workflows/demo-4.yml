@@ -1,18 +1,21 @@
 name: Demo 4 - Playing with matrix
 
-on: 
+on:
   push:
     branches: [master]
 
 jobs:
   test:
     strategy:
-    #A job matrix can generate a maximum of 256 jobs per workflow run
+      #A job matrix can generate a maximum of 256 jobs per workflow run
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [6, 7, 8]
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Print a greeting
-      run: |
-        echo Wake up Neo...
-    
+      - name: Print a greeting
+        run: |
+          echo Wake up Neo...
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
