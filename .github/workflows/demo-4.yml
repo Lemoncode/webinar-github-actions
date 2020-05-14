@@ -2,7 +2,7 @@ name: Demo 4 - Playing with matrix
 
 on: 
   push:
-    branches: [disabled]
+    branches: [master]
 
 jobs:
   test:

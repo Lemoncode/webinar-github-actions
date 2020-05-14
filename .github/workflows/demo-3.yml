@@ -2,7 +2,7 @@ name: Demo 3 - Custom Action
 
 on:
   push:
-    branches: [master]
+    branches: [disabled]
 
 jobs:
   build:
